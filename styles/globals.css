@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p,
+h1,
+::placeholder {
+  font-family: var(--font-inter);
+}
+html {
+  @apply h-full;
+}
+body {
+  @apply h-full;
+}
+div#__next {
+  @apply h-full;
+}
+main {
+  @apply h-full overflow-y-hidden;
+}
