@@ -1,8 +1,8 @@
-import { React, useState, useCallback } from "react";
+import { React, useCallback } from "react";
 import { X } from "lucide-react";
 import cx from "classnames";
 import * as Toast from "@radix-ui/react-toast";
-import { useMediaQuery } from "hooks/use-media-query.js"
+import { useMediaQuery } from "hooks/use-media-query.js";
 
 const Alert = ({ open, setOpen }) => {
   const onClick = useCallback(() => setOpen(false), [setOpen]);
@@ -13,7 +13,7 @@ const Alert = ({ open, setOpen }) => {
         open={open}
         onOpenChange={setOpen}
         className={cx(
-          "z-50 fixed bottom-12 lg:bottom-none inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full max-w-[320px] shadow-lg rounded-lg font-inter mx-auto",
+          "z-50 fixed bottom-12 lg:bottom-none inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full max-w-[320px] shadow-lg rounded-lg font-inter mx-auto group transition ease-in-out",
           "bg-white",
           "radix-state-open:animate-toast-slide-in-bottom lg:radix-state-open:animate-toast-slide-in-right",
           "radix-state-closed:animate-toast-hide",
@@ -21,14 +21,18 @@ const Alert = ({ open, setOpen }) => {
           "radix-swipe-direction-right:translate-x-radix-toast-swipe-move-x",
           "radix-swipe-direction-down:radix-swipe-end:animate-toast-swipe-out-y",
           "radix-swipe-direction-down:translate-y-radix-toast-swipe-move-y",
-          "radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]",
+          "radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]"
         )}
       >
         <button
-          className="w-5 h-5 bg-white shadow-lg absolute top-0 left-0 p-0 rounded-full border -translate-x-2 -translate-y-2 flex justify-center items-center"
+          className="w-5 h-5 bg-white shadow-lg absolute top-0 left-0 p-0 rounded-full border -translate-x-2 -translate-y-2 flex justify-center items-center opacity-0 group-hover:opacity-100 transition ease-in-out"
           onClick={onClick}
         >
-          <X width={14} height={14} className="text-[#858585] hover:text-black" />
+          <X
+            width={14}
+            height={14}
+            className="text-[#858585] hover:text-black transition ease-in-out"
+          />
         </button>
         <div className="flex">
           <div className="w-0 flex-1 flex items-center pl-5 py-4">

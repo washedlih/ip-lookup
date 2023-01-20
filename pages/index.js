@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import Card from "@/components/Card";
@@ -11,11 +10,6 @@ export default function Home() {
   const [data, setData] = useState({});
   const url = `https://api.techniknews.net/ipgeo/${ip}`;
   const [openToast, setOpenToast] = useState(false);
-  const isValidIp = (ip) => {
-    const regex = /^([0-9]{1,3}\.){3}[0-9]{1,3}$/;
-    setOpenToast(false);
-    return regex.test(ip);
-  };
   const fetchIp = async (e) => {
     e.preventDefault();
     if (ip === "") {
@@ -24,7 +18,7 @@ export default function Home() {
     }
     const response = await fetch(url);
     const data = await response.json();
-    if (!isValidIp(ip) || data.status === "fail") {
+    if (data.status === "fail") {
       setOpenToast(true);
       return;
     }
@@ -41,9 +35,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div className="w-full absolute -z-20 h-screen bg-black">
-          {/* <Image src="/pattern-bg.png" alt="/" fill></Image> */}
-        </div>
+        <div className="w-full absolute -z-20 h-screen bg-black"></div>
         <div className="flex justify-center items-center pt-8 text-3xl text-white font-bold">
           <h1>IP Address Lookup</h1>
         </div>
@@ -58,7 +50,7 @@ export default function Home() {
             value={ip}
             onChange={(e) => setIp(e.target.value)}
           />
-          <button className="p-4 bg-white rounded-r-xl max-h-[57px] max-w-[57px] w-full flex items-center">
+          <button className="p-4 bg-white rounded-r-xl max-h-[57px] max-w-[57px] w-full flex items-center hover:bg-[#f4f4f4] transition">
             <ChevronRight color="black" size={40} />
           </button>
         </form>
