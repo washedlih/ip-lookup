@@ -14,13 +14,13 @@ const Alert = ({ open, setOpen }) => {
         onOpenChange={setOpen}
         className={cx(
           "z-50 fixed bottom-4 inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full shadow-lg rounded-lg group bg-white max-w-[320px]",
-          "radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right",
-          "radix-state-closed:animate-toast-hide",
-          "radix-swipe-direction-right:radix-swipe-end:animate-toast-swipe-out-x",
-          "radix-swipe-direction-right:translate-x-radix-toast-swipe-move-x",
-          "radix-swipe-direction-down:radix-swipe-end:animate-toast-swipe-out-y",
-          "radix-swipe-direction-down:translate-y-radix-toast-swipe-move-y",
-          "radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]",
+          "state-open:animate-toast-slide-in-bottom md:state-open:animate-toast-slide-in-right",
+          "state-closed:animate-toast-hide",
+          "swipe-direction-right:swipe-end:animate-toast-swipe-out-x",
+          "swipe-direction-right:translate-x-toast-swipe-move-x",
+          "swipe-direction-down:swipe-end:animate-toast-swipe-out-y",
+          "swipe-direction-down:translate-y-toast-swipe-move-y",
+          "swipe-cancel:translate-x-0 swipe-cancel:duration-200 swipe-cancel:ease-[ease]",
         )}
       >
         <button
