@@ -8,7 +8,7 @@ const Alert = ({ open, setOpen }) => {
   const onClick = useCallback(() => setOpen(false), [setOpen]);
   const isLg = useMediaQuery("(min-width: 1024px)");
   return (
-    <Toast.Provider swipeDirection={isLg ? "right" : "down"} duration={20000}>
+    <Toast.Provider swipeDirection={isLg ? "right" : "down"} duration={2500}>
       <Toast.Root
         open={open}
         onOpenChange={setOpen}
