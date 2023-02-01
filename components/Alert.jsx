@@ -13,15 +13,14 @@ const Alert = ({ open, setOpen }) => {
         open={open}
         onOpenChange={setOpen}
         className={cx(
-          "z-50 fixed bottom-12 lg:bottom-none inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full max-w-[320px] shadow-lg rounded-lg font-inter mx-auto group transition ease-in-out",
-          "bg-white",
-          "radix-state-open:animate-toast-slide-in-bottom lg:radix-state-open:animate-toast-slide-in-right",
+          "z-50 fixed bottom-4 inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full shadow-lg rounded-lg group bg-white max-w-[320px]",
+          "radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right",
           "radix-state-closed:animate-toast-hide",
           "radix-swipe-direction-right:radix-swipe-end:animate-toast-swipe-out-x",
           "radix-swipe-direction-right:translate-x-radix-toast-swipe-move-x",
           "radix-swipe-direction-down:radix-swipe-end:animate-toast-swipe-out-y",
           "radix-swipe-direction-down:translate-y-radix-toast-swipe-move-y",
-          "radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]"
+          "radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]",
         )}
       >
         <button
