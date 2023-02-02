@@ -13,8 +13,8 @@ const Alert = ({ open, setOpen }) => {
         open={open}
         onOpenChange={setOpen}
         className={cx(
-          "z-50 fixed bottom-4 inset-x-4 lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full shadow-lg rounded-lg group bg-white max-w-[320px]",
-          "state-open:animate-toast-slide-in-bottom md:state-open:animate-toast-slide-in-right",
+          "z-50 fixed bottom-4 inset-x-4 mx-auto lg:top-4 lg:right-4 lg:left-auto lg:bottom-auto lg:w-full shadow-lg rounded-lg group bg-white max-w-[320px]",
+          "state-open:animate-toast-slide-in-bottom lg:state-open:animate-toast-slide-in-right",
           "state-closed:animate-toast-hide",
           "swipe-direction-right:swipe-end:animate-toast-swipe-out-x",
           "swipe-direction-right:translate-x-toast-swipe-move-x",
