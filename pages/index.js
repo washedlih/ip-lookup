@@ -12,15 +12,19 @@ export default function Home() {
   const [openToast, setOpenToast] = useState(false);
   const fetchIp = async (e) => {
     e.preventDefault();
-    if (ip === "") {
-      setOpenToast(true);
-      return;
-    }
     const response = await fetch(url);
     const data = await response.json();
-    if (data.status === "fail") {
+    if (ip === "" || data.status === "fail") {
       setOpenToast(true);
+      if (openToast) {
+        setOpenToast(false);
+        setTimeout(() => {
+          setOpenToast(true);
+        }, 350);
+      }
       return;
+    } else {
+      setOpenToast(false);
     }
     setData(data);
     setIp("");
