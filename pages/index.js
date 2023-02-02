@@ -8,10 +8,22 @@ import Alert from "@/components/Alert";
 export default function Home() {
   const [ip, setIp] = useState("");
   const [data, setData] = useState({});
-  const url = `https://api.techniknews.net/ipgeo/${ip}`;
   const [openToast, setOpenToast] = useState(false);
+
+  const handleInput = (ip) => {
+    let newIp = "";
+    for (let i = 0; i < ip.length; i++) {
+      if (ip[i] !== " ") {
+        newIp += ip[i];
+      }
+    }
+    return newIp;
+  };
+
   const fetchIp = async (e) => {
     e.preventDefault();
+    const newIp = handleInput(ip);
+    const url = `https://api.techniknews.net/ipgeo/${newIp}`;
     const response = await fetch(url);
     const data = await response.json();
     if (ip === "" || data.status === "fail") {
