@@ -1,14 +1,16 @@
 import Head from "next/head";
 import { useState } from "react";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader } from "lucide-react";
 import Card from "@/components/Card";
 import Map from "@/components/Map";
 import Alert from "@/components/Alert";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [ip, setIp] = useState("");
   const [data, setData] = useState({});
   const [openToast, setOpenToast] = useState(false);
+  const [finished, setFinished] = useState(true);
 
   const handleInput = (ip) => {
     let newIp = "";
@@ -27,6 +29,7 @@ export default function Home() {
     const response = await fetch(url);
     const data = await response.json();
     if (ip === "" || data.status === "fail") {
+      setFinished(true);
       setOpenToast(true);
       if (openToast) {
         setOpenToast(false);
@@ -40,6 +43,7 @@ export default function Home() {
     }
     setData(data);
     setIp("");
+    setFinished(true);
   };
 
   return (
@@ -50,9 +54,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="min-h-[100svh] relative">
         <div className="w-full absolute -z-20 h-screen bg-black"></div>
-        <div className="flex justify-center items-center pt-8 text-3xl text-white font-bold">
+        <div className="flex tracking-[-0.04em] md:tracking-normal justify-center items-center pt-8 text-3xl text-white font-bold">
           <h1>IP Address Lookup</h1>
         </div>
         <form
@@ -66,13 +70,23 @@ export default function Home() {
             value={ip}
             onChange={(e) => setIp(e.target.value)}
           />
-          <button className="p-4 bg-white rounded-r-xl max-h-[57px] max-w-[57px] w-full flex items-center hover:bg-[#f4f4f4] transition">
-            <ChevronRight color="black" size={40} />
+          <button
+            className="p-4 bg-white rounded-r-xl max-h-[57px] max-w-[57px] w-full flex items-center hover:bg-[#f4f4f4] transition"
+            onClick={() => setFinished(false)}
+          >
+            {finished ? (
+              <ChevronRight color="black" size={40} />
+            ) : (
+              <Loader color="black" size={40} className="animate-spin" />
+            )}
           </button>
         </form>
         <Alert open={openToast} setOpen={setOpenToast} />
         <Card data={data} />
         <Map data={data} />
+        <div className="flex justify-center items-center">
+          <Footer />
+        </div>
       </main>
     </>
   );
