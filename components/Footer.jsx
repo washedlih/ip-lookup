@@ -16,7 +16,7 @@ const Footer = () => {
       </div>
       <div className="flex gap-4">
         <a
-          href="https://github.com/washedlih/twitter-search"
+          href="https://github.com/washedlih/ip-lookup"
           className="group"
           target="_blank"
           rel="noopener noreferrer"
