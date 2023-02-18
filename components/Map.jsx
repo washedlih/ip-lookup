@@ -3,10 +3,10 @@ import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 const Map = ({ data }) => {
   const center = useMemo(
     () => ({
-      lat: data.lat ? data.lat : 37.7768,
-      lng: data.lon ? data.lon : -122.416,
+      lat: data.lat,
+      lng: data.lon,
     }),
-    [data]
+    [data],
   );
   return (
     <div className="h-full w-full">

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronRight, Loader } from "lucide-react";
 import Card from "@/components/Card";
 import Map from "@/components/Map";
@@ -11,6 +11,17 @@ export default function Home() {
   const [data, setData] = useState({});
   const [openToast, setOpenToast] = useState(false);
   const [finished, setFinished] = useState(true);
+
+  const initIp = async () => {
+    const url = "https://api.techniknews.net/ipgeo/";
+    const response = await fetch(url, { redirect: "follow" });
+    const data = await response.json();
+    setData(data);
+  };
+
+  useEffect(() => {
+    initIp();
+  }, []);
 
   const handleInput = (ip) => {
     let newIp = "";
