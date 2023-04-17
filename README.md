@@ -1,38 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![image](/public/iplookup.png)
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+[Twitter Search](https://ipsearch.vercel.app/) is a web app that allows you to search who a user is following based on keywords in their bio, username, and location.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Usage
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When you first visit the site, it will automatically fetch your current IP Address and display its location on the map. You can also enter an IP Address in the search bar to see specific information of that IP Address.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Purpose
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+I wanted to use an IP lookup API to build a simple web app that displays specific information about an IP address. This would be useful for anyone who wants to see the location of a user based on their IP address.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Lessons Learned
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+I learned how to work with the Google Maps API to display the location with a marker. One of the challenges I faced was figuring how to submit the form when the page first loads. I achieved this with a useEffect hook that runs a function to submit the form when the page first loads. This allowed me to fetch the user's current IP Address.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Radix UI](https://www.radix-ui.com/)
+- [Vercel](https://vercel.com/)
