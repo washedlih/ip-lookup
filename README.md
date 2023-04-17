@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[Twitter Search](https://ipsearch.vercel.app/) is a web app that allows you to search who a user is following based on keywords in their bio, username, and location.
+[IP Address Lookup](https://ipsearch.vercel.app/) is a web app that allows you to search who a user is following based on keywords in their bio, username, and location.
 
 ## Usage
 
