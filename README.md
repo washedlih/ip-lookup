@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[IP Address Lookup](https://ipsearch.vercel.app/) is a web app that allows you to search who a user is following based on keywords in their bio, username, and location.
+[IP Address Lookup](https://ipsearch.vercel.app/) is a web app that allows you to search for an IP Address and see its location on Google Maps. It also displays the city, country, zip code, and ISP.
 
 ## Usage
 
