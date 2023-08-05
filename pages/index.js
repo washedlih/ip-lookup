@@ -13,8 +13,9 @@ export default function Home() {
   const [finished, setFinished] = useState(true);
 
   const initIp = async () => {
-    const url = "https://api.techniknews.net/ipgeo/";
-    const response = await fetch(url, { redirect: "follow" });
+    const userIp = await fetch('https://api.techniknews.net/ip/');
+    const text = await userIp.text();
+    const response = await fetch(`https://api.techniknews.net/ipgeo/${text}`);
     const data = await response.json();
     setData(data);
   };
