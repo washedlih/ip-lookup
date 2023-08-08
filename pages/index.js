@@ -1,33 +1,30 @@
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import { ChevronRight, Loader } from "lucide-react";
-import Card from "@/components/Card";
-import Map from "@/components/Map";
-import Alert from "@/components/Alert";
-import Footer from "@/components/Footer";
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { ChevronRight, Loader } from 'lucide-react';
+import Card from '@/components/Card';
+import Map from '@/components/Map';
+import Alert from '@/components/Alert';
+import Footer from '@/components/Footer';
 
 export default function Home() {
-  const [ip, setIp] = useState("");
+  const [ip, setIp] = useState('');
   const [data, setData] = useState({});
   const [openToast, setOpenToast] = useState(false);
   const [finished, setFinished] = useState(true);
 
-  const initIp = async () => {
-    const userIp = await fetch('https://api.techniknews.net/ip/');
-    const text = await userIp.text();
-    const response = await fetch(`https://api.techniknews.net/ipgeo/${text}`);
-    const data = await response.json();
-    setData(data);
-  };
-
   useEffect(() => {
+    const initIp = async () => {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      setData(data);
+    };
     initIp();
   }, []);
 
   const handleInput = (ip) => {
-    let newIp = "";
+    let newIp = '';
     for (let i = 0; i < ip.length; i++) {
-      if (ip[i] !== " ") {
+      if (ip[i] !== ' ') {
         newIp += ip[i];
       }
     }
@@ -37,10 +34,10 @@ export default function Home() {
   const fetchIp = async (e) => {
     e.preventDefault();
     const newIp = handleInput(ip);
-    const url = `https://api.techniknews.net/ipgeo/${newIp}`;
+    const url = `https://ipapi.co/${newIp}/json/`;
     const response = await fetch(url);
     const data = await response.json();
-    if (ip === "" || data.status === "fail") {
+    if (ip === '' || data.error) {
       setFinished(true);
       setOpenToast(true);
       if (openToast) {
@@ -54,7 +51,7 @@ export default function Home() {
       setOpenToast(false);
     }
     setData(data);
-    setIp("");
+    setIp('');
     setFinished(true);
   };
 
@@ -73,8 +70,7 @@ export default function Home() {
         </div>
         <form
           onSubmit={fetchIp}
-          className="flex justify-center items-center mt-6 max-w-xs md:max-w-xl mx-auto"
-        >
+          className="flex justify-center items-center mt-6 max-w-xs md:max-w-xl mx-auto">
           <input
             type="text"
             placeholder="Search for any IP address"
@@ -84,8 +80,7 @@ export default function Home() {
           />
           <button
             className="p-4 bg-white rounded-r-xl max-h-[57px] max-w-[57px] w-full flex items-center hover:bg-[#f4f4f4] transition"
-            onClick={() => setFinished(false)}
-          >
+            onClick={() => setFinished(false)}>
             {finished ? (
               <ChevronRight color="black" size={40} />
             ) : (
